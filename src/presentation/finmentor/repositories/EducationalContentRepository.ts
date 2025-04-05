@@ -146,33 +146,36 @@ export class EducationalContentRepository implements IEducationalContentReposito
   private terms: FinancialTerm[] = [
     {
       id: 'term-1',
-      termino: 'ETF',
-      definicionCorta: 'Fondo cotizado en bolsa',
-      definicionLarga: 'Un ETF (Exchange-Traded Fund) es un tipo de fondo de inversión que cotiza en bolsa como una acción...',
-      categoria: 'inversiones',
-      tipoWeb: 'web2',
-      terminosRelacionados: ['fondo indexado', 'comisiones', 'diversificación'],
-      ejemplos: ['SPDR S&P 500 ETF (SPY)', 'iShares MSCI Emerging Markets ETF (EEM)']
+      term: 'ETF',
+      image: 'https://omi.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F44a87b7e2f4941c2861458615ca7d9fa%2Fassets%2Ffavicon%2F741.png&w=1440&q=75',
+      shortDescription: 'Fondo cotizado en bolsa',
+      longDescription: 'Un ETF (Exchange-Traded Fund) es un tipo de fondo de inversión que cotiza en bolsa como una acción...',
+      category: 'inversiones',
+      termType: 'web2',
+      relationsBetweenTerms: ['fondo indexado', 'comisiones', 'diversificación'],
+      examples: ['SPDR S&P 500 ETF (SPY)', 'iShares MSCI Emerging Markets ETF (EEM)']
     },
     {
       id: 'term-2',
-      termino: 'DeFi',
-      definicionCorta: 'Finanzas descentralizadas',
-      definicionLarga: 'DeFi (Decentralized Finance) se refiere a aplicaciones financieras construidas sobre redes blockchain...',
-      categoria: 'crypto',
-      tipoWeb: 'web3',
-      terminosRelacionados: ['lending', 'yield farming', 'liquidity pool', 'smart contract'],
-      ejemplos: ['Uniswap', 'Aave', 'Compound']
+      term: 'DeFi',
+      image: 'https://omi.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F44a87b7e2f4941c2861458615ca7d9fa%2Fassets%2Ffavicon%2F741.png&w=1440&q=75',
+      shortDescription: 'Finanzas descentralizadas',
+      longDescription: 'DeFi (Decentralized Finance) se refiere a aplicaciones financieras construidas sobre redes blockchain...',
+      category: 'crypto',
+      termType: 'web3',
+      relationsBetweenTerms: ['lending', 'yield farming', 'liquidity pool', 'smart contract'],
+      examples: ['Uniswap', 'Aave', 'Compound']
     },
     {
       id: 'term-3',
-      termino: 'Staking',
-      definicionCorta: 'Bloqueo de criptomonedas para validar transacciones',
-      definicionLarga: 'El staking consiste en mantener fondos en una wallet para participar en el funcionamiento de una red blockchain...',
-      categoria: 'crypto',
-      tipoWeb: 'web3',
-      terminosRelacionados: ['proof of stake', 'validator', 'rewards'],
-      ejemplos: ['Ethereum 2.0', 'Cardano', 'Solana']
+      term: 'Staking',
+      image: 'https://omi.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F44a87b7e2f4941c2861458615ca7d9fa%2Fassets%2Ffavicon%2F741.png&w=1440&q=75',
+      shortDescription: 'Bloqueo de criptomonedas para validar transacciones',
+      longDescription: 'El staking consiste en mantener fondos en una wallet para participar en el funcionamiento de una red blockchain...',
+      category: 'crypto',
+      termType: 'web3',
+      relationsBetweenTerms: ['proof of stake', 'validator', 'rewards'],
+      examples: ['Ethereum 2.0', 'Cardano', 'Solana']
     }
   ];
 
@@ -244,14 +247,14 @@ export class EducationalContentRepository implements IEducationalContentReposito
    * Find terms by category
    */
   async findTermsByCategory(category: string): Promise<FinancialTerm[]> {
-    return this.terms.filter(t => t.categoria === category).map(t => ({ ...t }));
+    return this.terms.filter(t => t.category === category).map(t => ({ ...t }));
   }
 
   /**
    * Find terms by web type
    */
   async findTermsByWebType(webType: 'web2' | 'web3'): Promise<FinancialTerm[]> {
-    return this.terms.filter(t => t.tipoWeb === webType).map(t => ({ ...t }));
+    return this.terms.filter(t => t.termType === webType).map(t => ({ ...t }));
   }
 
   /**

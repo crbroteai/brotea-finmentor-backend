@@ -57,13 +57,14 @@ export interface EducationalModule {
 
 export interface FinancialTerm {
   id: string;
-  termino: string;
-  definicionCorta: string;
-  definicionLarga: string;
-  categoria: string;
-  tipoWeb: 'web2' | 'web3';
-  terminosRelacionados: string[];
-  ejemplos: string[];
+  term: string;
+  image: string;
+  shortDescription: string;
+  longDescription: string;
+  category: string;
+  termType: 'web2' | 'web3';
+  relationsBetweenTerms: string[];
+  examples: string[];
 }
 
 // Progress Tracking Types

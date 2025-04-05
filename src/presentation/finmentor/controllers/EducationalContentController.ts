@@ -297,10 +297,10 @@ export class EducationalContentController {
       let content = "";
       let in_note = false;
       let term: unknown;
-
+      
       for (const segment of segments) {
         const lowerText = segment.text.toLowerCase();
-        if (lowerText.includes("start note") && !in_note) {
+        if (lowerText.includes("Ey omi") && !in_note) {
           in_note = true;
           content = ""; // Reset content when starting a new note
         }
@@ -309,15 +309,24 @@ export class EducationalContentController {
           content += " " + segment.text;
         }
 
-        if (lowerText.includes("stop and save") && in_note) {
+        if (lowerText.includes("stop Omi") && in_note) {
           in_note = false;
           const finalContent = content.trim();
           console.log("OK, HERE WE GOOOO!", finalContent);
 
-          console.log(content, session_id);
-
           // TODO: Create a new term from finalContent string
-          term = await this.service.createTerm(term as unknown as FinancialTerm);
+          const  newTerm: FinancialTerm = {
+            id: 'term-1',
+            term: 'Polygon',
+            image: 'https://imgs.search.brave.com/7qO_mF4Gn2vQfVIDQWDnsA9je3hk9dMort1XijW6KqI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9kZXZl/bG9wZXJzLm1vcmFs/aXMuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzExL1Bv/bHlnb24tMzAweDMw/MC5qcGVn',
+            shortDescription: 'Fondo cotizado en bolsa',
+            longDescription: 'Un ETF (Exchange-Traded Fund) es un tipo de fondo de inversión que cotiza en bolsa como una acción...',
+            category: 'inversiones',
+            termType: 'web2',
+            relationsBetweenTerms: ['fondo indexado', 'comisiones', 'diversificación'],
+            examples: ['SPDR S&P 500 ETF (SPY)', 'iShares MSCI Emerging Markets ETF (EEM)']
+          },
+          term = await this.service.createTerm(newTerm);
 
           content = "";
         }
